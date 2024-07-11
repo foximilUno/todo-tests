@@ -1,0 +1,36 @@
+# post
+    - processing correct request with completed false
+    - processing correct request with completed true
+    - processing request without id
+    - processing request without text
+    - processing request without completed
+    - processing request with already existed id
+    - processing request with empty string text
+    - processing request with negative id
+# get
+    - success processing without queries
+    - success processing request without limit
+    - success processing request without offset
+    - processing request with limit < 1 (0,-1,not numbers)
+    - processing request with offset < 1 (0,-1,not numbers)
+    - check responses for page 1 and 2 with do not repeated entities
+# put
+    - success processing with text and completed
+    - success processing with id ?
+    - success edit with text and completed
+    - success edit with id ?
+    - processing with not existing id
+    - processing request without text
+    - processing request without completed
+    - processing request without id
+    - processing request with empty body
+# delete
+    - success delete with completed=true
+    - success delete with completed=false
+    - fail delete with NOT existing id./
+    - fail delete with wrong authorization scheme
+    - fail delete with wrong authorization login
+    - fail delete with wrong authorization pass
+    - fail delete without authorization
+
+
