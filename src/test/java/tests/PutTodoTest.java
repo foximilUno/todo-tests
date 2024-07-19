@@ -6,6 +6,7 @@ import entities.Todo;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import steps.CommonTodoSteps;
 import steps.GetTodosSteps;
 import steps.PutTodoSteps;
 import steps.TodoGenerator;
@@ -53,13 +54,7 @@ public class PutTodoTest extends TestConfigurator {
 
         List<Todo> actualTodos = GetTodosSteps.getAllTodos();
 
-        Assertions.assertEquals(1,
-            actualTodos
-                .stream().filter(
-                    todo -> todo.getId().equals(editTodo.getId())
-                        && todo.getText().equals(editTodo.getText())
-                        && todo.getCompleted().equals(editTodo.getCompleted())).toList()
-                .size(), String.format("отсутствует todo %d с измененными text и completed", editTodo.getId()));
+        CommonTodoSteps.findEquals(List.of(editTodo), actualTodos);
     }
 
     //непонятно насколько такой кейс корректен

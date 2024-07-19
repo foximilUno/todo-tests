@@ -3,8 +3,12 @@ package tests;
 import entities.Todo;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Test;
+import steps.CommonTodoSteps;
+import steps.GetTodosSteps;
 import steps.PostTodoSteps;
 import utility.Utils;
+
+import java.util.List;
 
 public class PostTodoTest extends TestConfigurator {
 
@@ -16,6 +20,10 @@ public class PostTodoTest extends TestConfigurator {
             .completed(false)
             .build();
         PostTodoSteps.createTodo(todoEntity, HttpStatus.SC_CREATED);
+
+        List<Todo> actualTodos = GetTodosSteps.getAllTodos();
+
+        CommonTodoSteps.findEquals(List.of(todoEntity), actualTodos);
     }
 
     @Test
@@ -26,6 +34,10 @@ public class PostTodoTest extends TestConfigurator {
             .completed(true)
             .build();
         PostTodoSteps.createTodo(todoEntity, HttpStatus.SC_CREATED);
+
+        List<Todo> actualTodos = GetTodosSteps.getAllTodos();
+
+        CommonTodoSteps.findEquals(List.of(todoEntity), actualTodos);
     }
 
     @Test
