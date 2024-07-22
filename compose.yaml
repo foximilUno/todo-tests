@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+
+  todo-app:
+    image: todo-app
+    ports:
+      - "8080:4242"
+    networks:
+      - back
+
+  todo-tests:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      todo-app:
+        condition: service_started
+    environment:
+      SERVICE_ENDPOINT: "http://todo-app:4242"
+    networks:
+      - back
+
+networks:
+  back:
+    driver: bridge

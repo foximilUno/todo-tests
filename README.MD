@@ -1,3 +1,21 @@
+# Запуск тестов
+1. Необходимо скачать репозиторий с помощью git clone и перейти в корень проекта
+```markdown
+git clone 
+cd todo-tests
+```
+2. Далее необходимо загрузить в docker полученный образ `todo-app`
+
+```
+docker load < ./todo-app.tar
+```
+3. Затем выполнить команду для запуска сервиса и тестов
+```markdown
+docker-compose up
+```
+4. Проверить лог прогона тестов
+
+***
 # Task
 The attached image contains an application implementing the most straightforward TODO manager with CRUD operations. The image can be loaded via `docker load` and run using `docker run -p 8080:4242`.
 
